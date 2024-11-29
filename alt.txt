@@ -1,0 +1,27 @@
+response_stream = stream_agent_response(agent_executor, query=query)
+    print("response", response_stream)
+    full_response = ""
+    print("#", full_response)
+    for chunk in response_stream:
+        full_response += chunk
+        yield messages + [{"role": "assistant", "content": chunk}]
+    print("#", full_response)
+
+    messages.append({"role": "assistant", "content": full_response})
+
+
+
+
+
+    messages.append({"role": "user", "content": user_message})
+    agent_executor = travel_agent()
+    response_stream = stream_agent_response(agent_executor, query=user_message)
+    print("response", response_stream)
+    full_response = ""
+    print("#", full_response)
+    for chunk in response_stream:
+        full_response += chunk
+        yield messages + [{"role": "assistant", "content": chunk}]
+    print("#", full_response)
+
+    messages.append({"role": "assistant", "content": full_response})
